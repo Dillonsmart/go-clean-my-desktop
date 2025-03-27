@@ -6,8 +6,6 @@ import (
 	"time"
 )
 
-const ArchiveDirectory string = "Archive"
-
 var usersDesktopDirectory string = os.Getenv("HOME") + "/Desktop"
 var date string = time.Now().Format("2006-01-02")
 
@@ -16,21 +14,10 @@ func Run() {
 	var archiveDirectory string = usersDesktopDirectory + "/" + ArchiveDirectory
 	var destinationDirectory string = usersDesktopDirectory + "/" + ArchiveDirectory + "/" + date
 
-	// Creates the archive directory
-	archiveDirectoryError := os.Mkdir(archiveDirectory, 0755)
+	// Create the directories
+	CreateDirectories([]string{archiveDirectory, destinationDirectory})
 
-	if archiveDirectoryError != nil {
-		fmt.Println("Error creating archive directory: ", archiveDirectoryError)
-		return
-	}
-
-	// Creates the date directory
-	dateDirectoryError := os.Mkdir(destinationDirectory, 0755)
-
-	if dateDirectoryError != nil {
-		fmt.Println("Error creating directory: ", dateDirectoryError)
-		return
-	}
+	fmt.Println("Files to move: ", len(files))
 
 	for _, file := range files {
 		// Move the file
