@@ -1,5 +1,13 @@
 package main
 
+import (
+	"flag"
+)
+
 func main() {
-	Run()
+	stepThrough := flag.Bool("step", false, "Step through the files")
+
+	flag.Parse()
+
+	Run(*stepThrough)
 }

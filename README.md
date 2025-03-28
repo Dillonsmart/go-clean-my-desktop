@@ -7,6 +7,8 @@ A simple Go application to organize your desktop by moving files into an archive
 - Automatically organizes files on your desktop into a dated archive folder.
 - Skips hidden files unless explicitly specified.
 - Creates necessary directories if they do not exist.
+- **Step-through mode**: Allows you to confirm each file before moving it.
+
 
 ## Installation
 
@@ -29,3 +31,13 @@ This will:
 - Scan your desktop for files.
 - Create an Archive folder on your desktop if it doesn't already exist.
 - Move all non-hidden files into a subfolder within - Archive, named after the current date (e.g., Archive/2023-10-01).
+
+### Step-through Mode
+To enable step-through mode, run the application with the `-step` flag:
+```./clean-desktop -step```
+
+In this mode, the application will prompt you to confirm each file before moving it:
+
+- Enter Y to move the file.
+- Enter N to skip the file.
+- Any other input will be treated as invalid, and the file will be skipped.
